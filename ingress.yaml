@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: greenfriends-ingress
+  namespace: greenfriends  # Specify the namespace here
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"  # Set the maximum allowed request body size to 100 MB
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"  # Increase connect timeout to 10 minutes
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"  # Increase send timeout to 10 minutes
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"  # Increase read timeout to 10 minutes
+spec:
+  rules:
+  - host: "greenfriends.kovaion.ai"  # Replace with your actual domain
+    http:
+      paths:
+      - path: /appdashboard
+        pathType: Prefix
+        backend:
+          service:
+            name: greenfriends-admin-service  # The service for the admin dashboard
+            port:
+              number: 5001  # The port that the admin service is exposing
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: greenfriends-frontend-service  # The service for the frontend
+            port:
+              number: 8001  # The port that the frontend service is exposing
