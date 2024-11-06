@@ -36,7 +36,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: greenfriends-frontend-service  # Updated service name to match deployment
+  name: greenfriends-admin-service  # Updated service name to match deployment
   namespace: greenfriends  # Updated namespace to greenfriends
 spec:
   selector:
