@@ -2,29 +2,33 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: greenfriends-ingress
-  namespace: greenfriends  # Specify the namespace here
+  namespace: greenfriends
   annotations:
     kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/proxy-body-size: "100m"  # Set the maximum allowed request body size to 100 MB
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"  # Increase connect timeout to 10 minutes
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"  # Increase send timeout to 10 minutes
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"  # Increase read timeout to 10 minutes
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
 spec:
   rules:
-  - host: "greenfriends.kovaion.ai"  # Replace with your actual domain
+  - host: "admin-greenfriends.kovaion.ai"  # Subdomain for admin dashboard
     http:
       paths:
-      - path: /appdashboard
-        pathType: Prefix
-        backend:
-          service:
-            name: greenfriends-admin-service  # The service for the admin dashboard
-            port:
-              number: 80  # The NodePort service will expose port 80, which will route to the correct backend
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: greenfriends-frontend-service  # The service for the frontend
+            name: greenfriends-admin-service  # Admin service
             port:
-              number: 80  # The NodePort service will expose port 80 for the frontend as well
+              number: 5001  # The port that the admin service is exposing
+
+  - host: "greenfriends.kovaion.ai"  # Root domain for frontend service
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: greenfriends-frontend-service  # Frontend service
+            port:
+              number: 8001  # The port that the frontend service is exposing
