@@ -11,17 +11,6 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
 spec:
   rules:
-  - host: "admin-greenfriends.kovaion.ai"  # Subdomain for admin dashboard
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: greenfriends-admin-service  # Admin service
-            port:
-              number: 5001  # The port that the admin service is exposing
-
   - host: "greenfriends.kovaion.ai"  # Root domain for frontend service
     http:
       paths:
