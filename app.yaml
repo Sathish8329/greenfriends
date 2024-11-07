@@ -22,7 +22,7 @@ spec:
         eks.amazonaws.com/nodegroup: preprod
       containers:
       - name: frontend
-        image: sathish8329/appbuilderfront:v2
+        image: sathish8329/appbuilderfront:v3
         ports:
         - containerPort: 8001  # Ensure the container is exposed on port 8001
         readinessProbe:
