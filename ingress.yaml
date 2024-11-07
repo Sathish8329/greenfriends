@@ -20,11 +20,11 @@ spec:
           service:
             name: greenfriends-admin-service  # The service for the admin dashboard
             port:
-              number: 5001  # The port that the admin service is exposing
+              number: 80  # The NodePort service will expose port 80, which will route to the correct backend
       - path: /
         pathType: Prefix
         backend:
           service:
             name: greenfriends-frontend-service  # The service for the frontend
             port:
-              number: 8001  # The port that the frontend service is exposing
+              number: 80  # The NodePort service will expose port 80 for the frontend as well
