@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
 spec:
   rules:
-  - host: "greenfriends.kovaion.ai"  # Root domain for frontend service
+  - host: "engagetest.kovaion.ai"  # Root domain for frontend service
     http:
       paths:
       - path: /
