@@ -22,13 +22,13 @@ spec:
         eks.amazonaws.com/nodegroup: preprod
       containers:
       - name: frontend
-        image: sathish8329/greenfriends:710
+        image: sathish8329/webengage:710
         ports:
-        - containerPort: 8001  # Ensure the container is exposed on port 8001
+        - containerPort: 8081  # Ensure the container is exposed on port 8001
         readinessProbe:
           httpGet:
             path: /
-            port: 8001  # Correct port to match the containerPort
+            port: 8081  # Correct port to match the containerPort
           initialDelaySeconds: 30
           periodSeconds: 10
           failureThreshold: 3
@@ -45,5 +45,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80          # External port exposed for the service
-      targetPort: 8001   # Matches the container port in the deployment
+      targetPort: 8081   # Matches the container port in the deployment
   type: NodePort        # Optional: Depending on your needs, you may choose ClusterIP or LoadBalancer instead
