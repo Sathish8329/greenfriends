@@ -25,21 +25,6 @@ spec:
         image: sathish8329/webengage:792
         ports:
         - containerPort: 8081  # Ensure the container is exposed on port 8001
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 8081
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          failureThreshold: 3
-        readinessProbe:
-          httpGet:
-            path: /api
-            port: 8081
-          initialDelaySeconds: 10
-          periodSeconds: 10 
-          failureThreshold: 3        
-
 ---
 
 apiVersion: v1
