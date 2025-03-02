@@ -19,7 +19,7 @@ spec:
         app: frontend
     spec:
       nodeSelector:
-        eks.amazonaws.com/nodegroup: preprod
+        eks.amazonaws.com/nodegroup: kovaion-private-ng
       containers:
       - name: frontend
         image: sathish8329/webengage:1616
