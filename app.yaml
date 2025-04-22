@@ -22,7 +22,7 @@ spec:
         eks.amazonaws.com/nodegroup: kovaion-private-ngg
       containers:
       - name: frontend
-        image: sathish8329/webengage:1616
+        image: sathish8329/testingplay:2400
         ports:
         - containerPort: 8081  # Ensure the container is exposed on port 8001
 ---
