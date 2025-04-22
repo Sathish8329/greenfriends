@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: sathish8329/testingplay:2414
+        image: sathish8329/testingplay:2417
         ports:
         - containerPort: 3000  # Frontend is served on port 3000
         livenessProbe:
