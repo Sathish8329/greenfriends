@@ -18,13 +18,13 @@ spec:
       labels:
         app: frontend
     spec:
-      nodeSelector:
-        eks.amazonaws.com/nodegroup: kovaion-private-ngg
+      # nodeSelector:
+      #   eks.amazonaws.com/nodegroup: kovaion-private-ngg
       containers:
       - name: frontend
         image: sathish8329/testingplay:2400
         ports:
-        - containerPort: 8081  # Ensure the container is exposed on port 8001
+        - containerPort: 3000  # Ensure the container is exposed on port 8001
 ---
 
 apiVersion: v1
@@ -38,5 +38,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80          # External port exposed for the service
-      targetPort: 8081   # Matches the container port in the deployment
+      targetPort: 300   # Matches the container port in the deployment
   type: NodePort        # Optional: Depending on your needs, you may choose ClusterIP or LoadBalancer instead
